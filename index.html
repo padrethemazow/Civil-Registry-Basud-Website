@@ -3,68 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BASUD MBDIS</title>
+    <title>BASUD MBDIS - Secure Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Zen+Dots&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f0f2f5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #EFEAE4;
+            min-height: 100vh;
             display: flex;
+        }
+
+        .left-section {
+            flex: 1;
+            background-color: #EFEAE4;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
-        .login-container {
-            background: #fff;
-            padding: 2rem 2.5rem;
+
+        .main-logo {
+            background-color: #313D65;
+            border: 3px solid #EFEAE4;
+            padding: 20px 100px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            width: 320px;
         }
-        .login-container h2 {
-            margin-bottom: 1.5rem;
+
+        .logo-icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            color: #EFEAE4;
+            font-family: 'Zen Dots', cursive;
+            font-size: 36px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 16px;
             text-align: center;
+            margin-bottom: 30px;
+            font-weight: 400;
         }
-        .login-container label {
+
+        .agency-logos {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .agency-logo {
+            width: 80px;
+            height: 80px;
+            background-color: #EFEAE4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .agency-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .right-section {
+            flex: 1;
+            background-color:#EFEAE4;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .security-badges {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        .badge-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #EFEAE4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+        }
+
+        .login-card {
+            background-color: #313D65;
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
+            color: #EFEAE4;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+
+        .input-wrapper {
+            position: relative;
         }
-        .login-container button {
+
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 16px;
+        }
+
+        input, select {
             width: 100%;
-            padding: 0.7rem;
-            background: #007bff;
-            color: #fff;
+            padding: 12px 12px 12px 40px;
             border: none;
             border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            background-color: #EFEAE4;
+            color: #333;
         }
-        .login-container button:hover {
-            background: #0056b3;
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #10B981;
+            color: #EFEAE4;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #059669;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .forgot-password a {
+            color: #60A5FA;
+            text-decoration: underline;
+            font-size: 13px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #313D65;
+            color:#EFEAE4;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content {
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #EFEAE4;
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .left-section, .right-section { width: 100%; padding: 20px; }
+            .footer { flex-direction: column; text-align: center; gap: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="login.php" method="POST">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+    <div class="left-section">
+        <div class="main-logo">
+            <div class="logo-icon">
+                <img src="system logo.png" alt="System Logo">
+            </div>
+            <div class="logo-text">
+                <h1>BASUD<br>MBDIS</h1>
+            </div>
+        </div>
+        <div class="subtitle">Secure Government Portal Access</div>
+        <div class="agency-logos">
+            <div class="agency-logo"><img src="psa logo.png" alt="PSA Logo"></div>
+            <div class="agency-logo"><img src="office logo.png" alt="Office Logo"></div>
+            <div class="agency-logo"><img src="basud logo.png" alt="Basud Logo"></div>
+        </div>
+    </div>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+    <div class="right-section">
+        <div class="security-badges">
+            <div class="badge"><div class="badge-icon">🔒</div><span>SSL Secured</span></div>
+            <div class="badge"><div class="badge-icon">✓</div><span>Gov Certified</span></div>
+            <div class="badge"><div class="badge-icon">♿</div><span>WCAG 2.1 AA</span></div>
+        </div>
 
-            <button type="submit">Login</button>
-        </form>
+        <!-- 🔐 Functional PHP login form -->
+        <div class="login-card">
+            <form action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="username">Email Address</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📧</span>
+                        <input type="text" id="username" name="username" placeholder="Enter your government email" required>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-button">Secure Login →</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            © 2025 Municipal Government. All Rights Reserved.<br>
+            Secure Government Portal - Version 2.1.0
+        </div>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a><span>•</span>
+            <a href="#terms">Terms of Service</a><span>•</span>
+            <a href="#support">Support</a>
+        </div>
     </div>
 </body>
 </html>
