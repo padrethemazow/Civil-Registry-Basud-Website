@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ===== BASIC RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BODY STYLE ===== */
+body {
+    font-family: 'Inter', sans-serif; /* font style ng buong page */
+  background-color: #EFEAE4;      /* background color ng page */
+}
+
+/* Main Login Container */
+.login-container {
+  width: 450px; /* lapad ng box */
+  height: 400px; /* taas ng box */
+  background-color: #313D65; /* kulay ng box */
+  border-radius: 12px; /* rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* shadow effect */
+  position: absolute;
+  top: 45%; /* gitna vertically */
+  left: 75%; /* gitna horizontally */
+  transform: translate(-50%, -50%); /* para gitnang-gitna talaga */
+  padding: 40px 30px; /* loob spacing */
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Email Section */
+.email-section {
+  width: 100%;
+}
+
+/* Label */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #EEE7DD;
+  font-size: 14px;
+}
+
+/* Input Wrapper (icon + textbox) */
+.email-input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px; /* space sa pagitan ng mga input */
+}
+
+/* Icon sa loob ng textbox */
+.email-input-wrapper .email-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #313D65;
+}
+
+/* Input Field */
+.email-input-wrapper input[type="email"] {
+  width: 100%;
+  padding: 12px 12px 12px 40px; /* space sa kaliwa para sa icon */
+  border: 1px solid #EFEAE4;
+  border-radius: 8px;
+  font-size: 13px;
+  background-color: #EFEAE4;
+  color: #EFEAE4;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* Placeholder Color */
+.email-input-wrapper input::placeholder {
+  color: #B0B8D1;
+}
+
+/* Focus Effect */
+.email-input-wrapper input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background-color: #35406E;
+}
+
+/* Baguhin kulay ng icon kapag may input focus (para visible sa dark bg) */
+.email-input-wrapper:focus-within .email-icon {
+  color: #ffffff; /* white kapag nagta-type */
+  transition: color 0.3s ease;
+}
+
+/* Small note text below email field */
+.email-note {
+  display: block;
+  margin-top: -15px; /* para malapit sa textbox */
+  margin-bottom: 20px; /* space bago sunod na field */
+  font-size: 12px;
+  color: #B0B8D1;
+  font-style: italic;
+}
+
+
+/* Password Section */
+.email-section {
+  width: 100%;
+}
+
+/* Label */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #EEE7DD;
+  font-size: 14px;
+}
+
+/* Input Wrapper (icon + textbox) */
+.email-input-wrapper,
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px; /* space sa pagitan ng mga input */
+}
+
+/* Icon sa loob ng textbox */
+.email-input-wrapper .email-icon,
+.password-input-wrapper .password-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #313D65;
+  transition: color 0.3s ease;
+}
+
+/* Input Field */
+.email-input-wrapper input[type="email"],
+.password-input-wrapper input[type="password"] {
+  width: 100%;
+  padding: 12px 12px 12px 40px; /* space sa kaliwa para sa icon */
+  border: 1px solid #EFEAE4;
+  border-radius: 8px;
+  font-size: 13px;
+  background-color: #EFEAE4;
+  color: #313D65;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* Placeholder Color */
+.email-input-wrapper input::placeholder,
+.password-input-wrapper input::placeholder {
+  color: #B0B8D1;
+}
+
+/* Focus Effect */
+.email-input-wrapper input:focus,
+.password-input-wrapper input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background-color: #35406E;
+  color: #ffffff;
+}
+
+/* Baguhin kulay ng icon kapag may input focus (para visible sa dark bg) */
+.email-input-wrapper:focus-within .email-icon,
+.password-input-wrapper:focus-within .password-icon {
+  color: #ffffff; /* white kapag nagta-type */
+}
+
+
+/* Wrapper para mag side by side */
+.auth-options {
+  display: flex;
+  align-items: center;
+  gap: 100px; /* space sa pagitan nila */
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+/* Label text */
+.auth-option {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #EEE7DD;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 300; /* manipis na font */
+}
+
+/* Checkbox design */
+.auth-checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #EEE7DD;
+  border-radius: 2px;
+  margin-right: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Checked state */
+.auth-checkbox:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+  position: relative;
+}
+
+/* Optional checkmark */
+.auth-checkbox:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  font-size: 12px;
+  color: #fff;
+}
+
+/* Secure Login Button */
+.secure-login-btn {
+  width: 100%;
+  background-color: #34C759; /* bright green */
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  cursor: pointer;
+  margin-top: 25px; /* space mula sa checkboxes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between icon and text */
+  transition: 0.3s ease;
+}
+
+/* Icon inside button */
+.secure-login-btn .login-icon {
+  font-size: 20px;
+}
+
+/* Hover effect */
+.secure-login-btn:hover {
+  background-color: #2ebf50; /* darker green when hover */
+  transform: scale(1.02);
+}
+
+/* Forgot Password Section */
+.forgot-password {
+  text-align: center;
+  margin-top: 8px; /* space mula sa button */
+}
+
+/* Forgot Password Link */
+.forgot-password a {
+  color: #B0B8D1;
+  font-size: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 400; /* manipis na font */
+}
+
+/* Hover effect */
+.forgot-password a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+
+.security-section {
+  display: flex;
+  justify-content: center; /* centers all horizontally */
+  align-items: center;
+  gap: 20px; /* even spacing between each label */
+  transform: scale(0.9); /* ito ang pampaliit, palitan mo value (0.5 = mas maliit, 1 = normal) */
+  margin-top: 110px; /* adjust vertical position */
+  margin-left: 760px; /* adjust horizontal position */
+}
+
+.security-label {
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 100;
+  color: #2c3e50;
+}
+
+.security-label i {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #2c3e50;
+}
+
+/*footer*/
+.footer-bar {
+  background-color: #2E3965; /* dark navy tone */
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  line-height: 1.4;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.footer-bar p {
+  margin: 2px 0;
+}
+
+.footer-links {
+  margin-top: 5px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: 500;
+  font-size: 8px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #FFD700; /* gold on hover */
+}
+
+.footer-links span {
+  opacity: 0.7;
+}
+
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/*Logo na box*/
+.logo-banner {
+  background-color: #2E3965; /* dark navy rectangle */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* space between logo and text */
+  padding: 15px 20px; 
+  margin-top: 120px;
+  width:50%; /* adjust width to your layout */
+  max-width: 900px; /* prevents it from being too wide */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo-banner .logo {
+  height: 100%; /* adjust size */
+  width: 100%;
+  object-fit: cover; /* fills the box */
+}
+
+
+.logo-banner h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* White inner rectangle sa loob ng blue box */
+.logo-inner-box {
+  background-color: #ffffff; /* white rectangle */
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  margin-left: 340PX;
+}
+
+.logo-inner-box .logo {
+  height: 120px; /* adjust size if needed */
+  width: 350px;
+  object-fit: contain;
+}
+
+.gov-text {
+  position: absolute;
+  top: 440px; /* adjust pa  taas o pababa */
+  left: 31%;
+  transform: translateX(-50%);
+  color: #6c6c6c;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ===== LOADING MODAL STYLES ===== */
+#loading-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px); /* ito yung nagbablur ng background */
+  background: rgba(0, 0, 0, 0.4); /* dark transparent overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  z-index: 9999; /* siguraduhin nasa ibabaw ng lahat */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Loader Spinner */
+.loader {
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top: 6px solid #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hide animation */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+

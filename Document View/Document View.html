@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document View - Registry No. LCR-2023-001</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Document View.css">
+</head>
+<body>
+  <nav class="document-navbar">
+    <div class="navbar-left">
+      <button class="back-button" id="backButton">
+        <i class='bx bx-arrow-back'></i>
+        Back to Results
+      </button>
+    </div>
+    <div class="navbar-center">
+      <h1 class="document-title">Document View - Registry No. LCR-2023-001</h1>
+    </div>
+    <div class="navbar-right">
+      <button class="action-button" title="Edit"><i class='bx bx-edit'></i></button>
+      <button class="action-button" title="Print"><i class='bx bx-printer'></i></button>
+      <button class="action-button" title="Download"><i class='bx bx-download'></i></button>
+    </div>
+  </nav>
+
+  <div class="tab-container">
+    <ul class="tabs">
+      <li class="tab active" data-tab="certificate1"><i class='bx bx-file'></i> Certificate Page 1</li>
+      <li class="tab" data-tab="certificate2"><i class='bx bx-copy'></i> Certificate Page 2</li>
+      <li class="tab" data-tab="attachments"><i class='bx bx-paperclip'></i> Attachments for IP</li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="certificate1" class="tab-pane active">
+        <div class="certificate-content">
+          <h2>Birth Certificate</h2>
+          <div class="certificate-preview">
+            <p>Certificate Page 1 content preview</p>
+            <!-- Add your certificate content here -->
+          </div>
+        </div>
+      </div>
+      <div id="certificate2" class="tab-pane">
+        <div class="certificate-content">
+          <h2>Birth Certificate</h2>
+          <div class="certificate-preview">
+            <p>Certificate Page 2 content preview</p>
+            <!-- Add your certificate content here -->
+          </div>
+        </div>
+      </div>
+      <div id="attachments" class="tab-pane">
+        <div class="attachments-content">
+          <h2>Attachments for IP</h2>
+          <div class="attachments-list">
+            <p>No attachments available</p>
+            <!-- Add your attachments list here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="Document View.js"></script>
+</body>
+</html>

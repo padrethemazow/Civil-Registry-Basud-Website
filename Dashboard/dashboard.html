@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/PSA logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Loading Modal -->
+  <div id="loading-modal">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
+
+  <!-- ===== NAVBAR SECTION ===== -->
+  <nav class="dashboard-navbar">
+    <img src="assets/logo2.png" alt="Basud MBDIS Logo" class="nav-logo">
+
+    <!-- Center: Menu -->
+    <div class="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="dropdown">
+          <a href="#">File</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">New</a></li>
+            <li><a href="#">Open</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">Search</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="search-link" data-tab="detailed-search">Detailed Search <span class="shortcut">Ctrl + S</span></a></li>
+            <li><a href="#" class="search-link" data-tab="quick-search">Quick Search <span class="shortcut">Ctrl + F</span></a></li>
+            <li class="menu-separator"></li>
+            <li><a href="#">Last entered records</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">View</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Zoom In</a></li>
+            <li><a href="#">Zoom Out</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">Tools</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Options</a></li>
+            <li><a href="#">Customize</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">Windows</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Cascade</a></li>
+            <li><a href="#">Tile</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">Help</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">View Help</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right: Icons + Profile -->
+    <div class="nav-right">
+      <h5 class="db-info">DB: MCRMainServer, User: LORNAJ</h5>
+      <!-- DARK MODE TOGGLE ICON -->
+      <i class='bx bx-moon' id="darkModeToggle"></i>
+
+      <!-- Bell Icon -->
+      <i class='bx bx-bell' id="notifIcon"></i>
+
+      <!-- Notification Dropdown -->
+      <div class="notif-dropdown" id="notifDropdown">
+        <p><strong>Notifications</strong></p>
+        <div class="notif-item">New user registered</div>
+        <div class="notif-item">Database backup completed</div>
+        <div class="notif-item">Server status: Online</div>
+      </div>
+
+      <!-- USER PROFILE -->
+      <div class="user-profile" id="userProfile">
+        <div class="user-initials">AD</div>
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">Administrator</span>
+        </div>
+        <i class='bx bx-chevron-down' id="dropdownIcon"></i>
+      </div>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TAB NAVIGATION SECTION ===== -->
+  <div class="tab-container">
+    <div class="tab-buttons">
+      <button class="tab-button active" data-tab="dashboard">Dashboard</button>
+      <button class="tab-button" data-tab="detailed-search">Detailed Search</button>
+      <button class="tab-button" data-tab="quick-search">Quick Search</button>
+    </div>
+
+    <!-- === Dashboard Section === -->
+    <div class="tab-content active" id="dashboard">
+      <!-- Welcome Message -->
+      <div class="welcome-message">
+        <h1>Welcome to PhilCRIS Modern Dashboard</h1>
+        <p class="system-subtitle">Philippine Civil Registry Information System - Modern Edition</p>
+      </div>
+
+      <!-- Dashboard Statistics Section -->
+      <div class="dashboard-statistics">
+        <div class="statistics-header">
+          <h2>Dashboard Statistics</h2>
+          <div class="header-right">
+            <span class="last-updated">Last updated: 9/26/2025</span>
+            <button class="refresh-btn">⟳ Refresh</button>
+          </div>
+        </div>
+        <div class="header-line"></div>
+      </div>
+
+      <!-- Dashboard Cards Section -->
+      <div class="dashboard-cards">
+        <div class="stat-card">
+          <div class="card-left">
+            <h3>Total Records</h3>
+            <p class="stat-value">12,543</p>
+            <p class="stat-change positive">↑ 12% vs last month</p>
+          </div>
+          <div class="card-icon green">
+            <i class='bx bx-file'></i>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="card-left">
+            <h3>Active Users</h3>
+            <p class="stat-value">24</p>
+            <p class="stat-change positive">↑ 12% vs last month</p>
+          </div>
+          <div class="card-icon pink">
+            <i class='bx bx-user'></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-section">
+        <div class="bottom-card">
+          <h3>Recent Activities</h3>
+          <p>No recent activities</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Detailed Search Section JULIUS === -->
+    <div class="tab-content" id="detailed-search">
+      <div class="search-container">
+        <div class="search-header">
+          <h2>Detailed Search</h2>
+        </div>
+
+        <div class="search-form">
+          <div class="document-type">
+            <label>Document Type</label>
+            <div class="radio-group">
+              <div class="radio-item">
+                <input type="radio" id="birth" name="documentType" value="birth" checked>
+                <label for="birth">Birth</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="marriage" name="documentType" value="marriage">
+                <label for="marriage">Marriage</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="death" name="documentType" value="death">
+                <label for="death">Death</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Birth Form -->
+          <div id="birth-form" class="form-content active">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Book No.</label>
+                <input type="text" placeholder="Enter book number">
+              </div>
+              <div class="form-group">
+                <label>Page No.</label>
+                <input type="text" placeholder="Enter page number">
+              </div>
+              <div class="form-group">
+                <label>Registry No.</label>
+                <input type="text" placeholder="Enter registry number">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Child's Last Name</label>
+                <input type="text" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label>Child's First Name</label>
+                <input type="text" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label>Child's Middle Name</label>
+                <input type="text" placeholder="Enter middle name">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Mother's Last Name</label>
+                <input type="text" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label>Mother's First Name</label>
+                <input type="text" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label>Mother's Middle Name</label>
+                <input type="text" placeholder="Enter middle name">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Father's Last Name</label>
+                <input type="text" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label>Father's First Name</label>
+                <input type="text" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label>Father's Middle Name</label>
+                <input type="text" placeholder="Enter middle name">
+              </div>
+            </div>
+          </div>
+
+          <!-- Marriage Form -->
+          <div id="marriage-form" class="form-content">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Book No.</label>
+                <input type="text" placeholder="Enter book number">
+              </div>
+              <div class="form-group">
+                <label>Page No.</label>
+                <input type="text" placeholder="Enter page number">
+              </div>
+              <div class="form-group">
+                <label>Registry No.</label>
+                <input type="text" placeholder="Enter registry number">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Husband's Last Name</label>
+                <input type="text" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label>Husband's First Name</label>
+                <input type="text" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label>Husband's Middle Name</label>
+                <input type="text" placeholder="Enter middle name">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Wife's Last Name</label>
+                <input type="text" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label>Wife's First Name</label>
+                <input type="text" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label>Wife's Middle Name</label>
+                <input type="text" placeholder="Enter middle name">
+              </div>
+            </div>
+          </div>
+
+          <!-- Death Form -->
+          <div id="death-form" class="form-content">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Book No.</label>
+                <input type="text" placeholder="Enter book number">
+              </div>
+              <div class="form-group">
+                <label>Page No.</label>
+                <input type="text" placeholder="Enter page number">
+              </div>
+              <div class="form-group">
+                <label>Registry No.</label>
+                <input type="text" placeholder="Enter registry number">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Deceased's Last Name</label>
+                <input type="text" placeholder="Enter last name">
+              </div>
+              <div class="form-group">
+                <label>Deceased's First Name</label>
+                <input type="text" placeholder="Enter first name">
+              </div>
+              <div class="form-group">
+                <label>Deceased's Middle Name</label>
+                <input type="text" placeholder="Enter middle name">
+              </div>
+            </div>
+          </div>
+
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="annotations">
+              <label for="annotations">With Annotations</label>
+            </div>
+          </div>
+
+          <button type="submit" class="search-button">
+            <i class='bx bx-search'></i> Search
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Results for Detailed Search -->
+      <div id="detailed-results" class="results-section results-wrapper">
+        <div class="results-header">
+            <div>
+                <div class="results-title">Search Results</div>
+            </div>
+            <button class="filter-btn">
+              <i class='bx bx-filter'></i> Filter
+            </button>
+        </div>
+        <div class="table-container">
+            <table aria-label="Search Results Table2">
+                <thead>
+                    <tr id="detailed-results-head"></tr>
+                </thead>
+                <tbody id="detailed-results-body"></tbody>
+            </table>
+            <div class="table-foot-actions">
+                <span class="pill success">✓ Available</span>
+                <button class="pill danger" type="button">✖ Delete Document</button>
+                <button id="viewDocBtn" class="pill info" type="button">👁 View Document</button>
+                <button class="pill muted" type="button">✕ Close</button>
+            </div>
+        </div>
+        <div class="section-kicker" id="detailed-results-count">0 documents found</div>
+      </div>
+    </div>
+
+    <!-- === Quick Search Section === -->
+    <div class="tab-content" id="quick-search">
+      
+      <div class="search-container2">
+        <div class="search-header2">
+          <h2>Quick Search</h2>
+        </div>
+
+        <div class="search-form">
+          <div class="document-type">
+            <label>Document Type</label>
+            <div class="radio-group">
+              <div class="radio-item">
+                <input type="radio" id="birth-quick" name="documentTypeQuick" value="birth" checked>
+                <label for="birth-quick">Birth</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="marriage-quick" name="documentTypeQuick" value="marriage">
+                <label for="marriage-quick">Marriage</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="death-quick" name="documentTypeQuick" value="death">
+                <label for="death-quick">Death</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="search-input-group">
+            <div class="form-group">
+              <label>Word to search for</label>
+              <input type="text" placeholder="Enter search keyword" id="searchKeyword">
+            </div>
+            <button type="submit" class="search-button2">
+              <i class='bx bx-search'></i> Search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Results for Quick Search -->
+      <div id="quick-results" class="results-section results-wrapper">
+        <div class="results-header">
+            <div>
+                <div class="section-kicker">Search Results</div>
+                <div class="results-title">Search Results</div>
+            </div>
+            <button class="filter-btn">Filter</button>
+        </div>
+        <div class="table-container">
+            <table aria-label="Search Results Table">
+                <thead>
+                    <tr id="quick-results-head"></tr>
+                </thead>
+                <tbody id="quick-results-body"></tbody>
+            </table>
+            <div class="table-foot-actions">
+                <span class="pill success">✓ Available</span>
+                <button class="pill danger" type="button">✖ Delete Document</button>
+                <button id="viewDocBtn" class="pill info" type="button">👁 View Document</button>
+                <button class="pill muted" type="button">✕ Close</button>
+            </div>
+        </div>
+        <div class="section-kicker" id="quick-results-count">0 documents found</div>
+      </div>
+    </div>
+
+
+  <!-- ===== FOOTER SECTION ===== -->
+  <footer class="dashboard-footer">
+    <p>&copy; 2025 Basud MBDIS Dashboard. All rights reserved.</p>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

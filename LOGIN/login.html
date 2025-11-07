@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="x-icon" href="C:\Users\Asus\OneDrive\Documents\JUL STUFF\VScode\PSA sample\assets\PSA logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="security-section">
+    <div class="security-label">
+      <i class='bx bxs-lock'></i>
+      <span>SSL Secured</span>
+    </div>
+  
+    <div class="security-label">
+      <i class='bx bxs-badge-check'></i>
+      <span>Gov Certified</span>
+    </div>
+  
+    <div class="security-label">
+      <i class='bx bxs-shield'></i>
+      <span>WCAG 2.1 AA</span>
+    </div>
+  </div>
+
+  <!-- Loading Modal -->
+<div id="loading-modal">
+  <div class="loader"></div>
+  <p>Loading...</p>
+</div>
+
+
+  <div class="login-container">
+    <div class="email-section">
+      
+      <!-- EMAIL FIELD -->
+      <label for="user-email">Email Address</label>
+      <div class="email-input-wrapper">
+        <i class='bx bxs-envelope email-icon'></i>
+        <input type="email" id="user-email" name="user-email" placeholder="Enter your email">
+      </div>
+
+      <!-- SMALL NOTE MESSAGE -->
+      <small class="email-note">Use your official government email address</small>
+
+      <!-- PASSWORD FIELD -->
+      <label for="user-password">Password</label>
+      <div class="password-input-wrapper">
+        <i class='bx bxs-lock-alt password-icon'></i>
+        <input type="password" id="user-password" name="user-password" placeholder="Enter your password">
+        
+      </div>
+
+      <!-- SMALL NOTE MESSAGE -->
+      <small class="email-note">Use your official government email address</small>
+
+      <!-- REMEMBER & 2FA SECTION -->
+      <div class="auth-options">
+        <label class="auth-option">
+          <input type="checkbox" class="auth-checkbox">
+          Remember this device
+        </label>
+
+        <label class="auth-option">
+          <input type="checkbox" class="auth-checkbox">
+          Enable 2FA
+        </label>
+      </div>
+
+      <!-- LOGIN BUTTON -->
+      <button class="secure-login-btn">
+        <i class='bx bx-log-in-circle login-icon'></i>
+        Secure Login
+      </button>
+
+      <div class="forgot-password">
+        <a href="../FORGOT PASSWORD/forgot.html">Forgot your password?</a>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="logo-banner">
+    <div class="logo-inner-box">
+    <img src="assets/logo.png" alt="Government Logo" class="logo">
+  </div>
+</div>
+  
+  <div class="gov-text">
+    <p>Secure Government Portal Access</p>
+    <div class="gov-logos">
+      <img src="assets/psa.png" alt="PSA">
+      <img src="assets/dost.png" alt="DOST">
+      <img src="assets/lgulogo.png" alt="LGU">
+    </div>
+  </div>
+  
+  
+  <footer class="footer-bar">
+    <p>© 2025 Municipal Government. All Rights Reserved.</p>
+    <p>Secure Government Portal - Version 2.1.0</p>
+    <div class="footer-links">
+      <a href="https://psada.psa.gov.ph/privacy-policy">Privacy Policy</a>
+      <span>•</span>
+      <a href="https://rsso12.psa.gov.ph/terms-use">Terms of Service</a>
+      <span>•</span>
+      <a href="https://psada.psa.gov.ph/helpcenter">Support</a>
+    </div>
+  </footer>
+
+  <script src="login.js"></script>
+</body>
+</html>
