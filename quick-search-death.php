@@ -26,7 +26,7 @@ if (isset($_POST['search'])) {
 
     // --- Search in 'death' table (legacy) ---
     $stmt1 = $conn1->prepare("
-        SELECT ID, FIRST, MI, LAST, SEX, DATEX, PLACE, FOLIO_NO, PAGE_NO, LCR_NO, MFirst, MMI, MLast, FFirst, FMI, FLast, DREG
+        SELECT ID, FIRST, MI, LAST, SEX, DATEX, LCR_NO, FOLIO_NO, PAGE_NO, DREG
         FROM death
         WHERE FIRST LIKE ? OR LAST LIKE ? OR LCR_NO LIKE ? OR FOLIO_NO LIKE ? OR PAGE_NO LIKE ?
         ORDER BY DATEX DESC
@@ -35,10 +35,9 @@ if (isset($_POST['search'])) {
     $stmt1->execute();
     $results_death = $stmt1->get_result();
 
-    // --- Search in 'death' table (phcris) ---
+    // --- Search in 'death' table (PHCRIS) ---
     $stmt2 = $conn2->prepare("
-        SELECT ID, CFirstName, CMiddleName, CLastName, CSexId, CDeathDate, CDeathMunicipality, CDeathProvince, RegistryNum,
-               MFirstName, MMiddleName, MLastName, FFirstName, FMiddleName, FLastName, DateRegistered
+        SELECT ID, CFirstName, CMiddleName, CLastName, CSexId, CDeathDate, RegistryNum, BookNum, PageNum, DateRegistered
         FROM death
         WHERE CFirstName LIKE ? OR CLastName LIKE ? OR RegistryNum LIKE ? OR BookNum LIKE ? OR PageNum LIKE ?
         ORDER BY CDeathDate DESC
@@ -53,12 +52,11 @@ if (isset($_POST['search'])) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Death Search | Basud MBDIS</title>
+<title>Quick Search | Basud MBDIS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Zen+Dots&display=swap" rel="stylesheet">
 <style>
-/* === Use same CSS as quick-search-birth.php === */
 :root {
   --bg: #EFEAE4;
   --blue: #313D65;
@@ -124,9 +122,9 @@ tr:nth-child(even) { background-color: #f7f5f2; }
     <div class="tab active">Quick Search</div>
   </div>
   <div style="display: flex; gap: 20px;">
-    <button onclick="location.href='quick-search-birth.php'">Birth</button>
-    <button onclick="location.href='quick-search-marriage.php'">Marriage</button>
-    <button style="background:#d1d5db; font-weight:bold;">Death</button>
+    <button>Birth</button>
+    <button>Marriage</button>
+    <button>Death</button>
   </div>
 
   <h1 class="title" style="font-family:'Zen Dots'; color:var(--blue); font-size:28px;">Quick Death Record Search</h1>
@@ -139,18 +137,15 @@ tr:nth-child(even) { background-color: #f7f5f2; }
     </form>
   </div>
 
-  <div class="section-title">Legacy CRIS Death Table (death)</div>
+  <div class="section-title">Legacy CRIS Death Table</div>
   <?php if ($results_death && $results_death->num_rows > 0): ?>
       <table>
           <tr>
-              <th>Full Name</th>
+              <th>Name</th>
               <th>Sex</th>
               <th>Date of Death</th>
-              <th>Place Code</th>
+              <th>Registry No.</th>
               <th>Book/Page</th>
-              <th>LCR No.</th>
-              <th>Mother’s Name</th>
-              <th>Father’s Name</th>
               <th>Date Registered</th>
           </tr>
           <?php while($row = $results_death->fetch_assoc()): ?>
@@ -158,31 +153,25 @@ tr:nth-child(even) { background-color: #f7f5f2; }
                   <td><?php echo htmlspecialchars($row['FIRST'].' '.$row['MI'].'. '.$row['LAST']); ?></td>
                   <td><?php echo ($row['SEX'] == 1) ? 'Male' : (($row['SEX'] == 2) ? 'Female' : 'Unknown'); ?></td>
                   <td><?php echo htmlspecialchars($row['DATEX']); ?></td>
-                  <td><?php echo htmlspecialchars($row['PLACE']); ?></td>
-                  <td><?php echo htmlspecialchars($row['FOLIO_NO'].'/'.$row['PAGE_NO']); ?></td>
                   <td><?php echo htmlspecialchars($row['LCR_NO']); ?></td>
-                  <td><?php echo htmlspecialchars($row['MFirst'].' '.$row['MMI'].'. '.$row['MLast']); ?></td>
-                  <td><?php echo htmlspecialchars($row['FFirst'].' '.$row['FMI'].'. '.$row['FLast']); ?></td>
+                  <td><?php echo htmlspecialchars($row['FOLIO_NO'].'/'.$row['PAGE_NO']); ?></td>
                   <td><?php echo htmlspecialchars($row['DREG']); ?></td>
               </tr>
           <?php endwhile; ?>
       </table>
   <?php else: ?>
-      <p class="no-result">No matches found in <strong>legacy death</strong> table.</p>
+      <p class="no-result">No matches found in <strong>Legacy CRIS</strong>.</p>
   <?php endif; ?>
 
-  <div class="section-title">Philippine CRIS Death Table (death)</div>
+  <div class="section-title">Philippine CRIS Death Table</div>
   <?php if ($results_phdeath && $results_phdeath->num_rows > 0): ?>
       <table>
           <tr>
-              <th>Full Name</th>
+              <th>Name</th>
               <th>Sex</th>
               <th>Date of Death</th>
-              <th>Municipality</th>
-              <th>Province</th>
               <th>Registry No.</th>
-              <th>Mother’s Name</th>
-              <th>Father’s Name</th>
+              <th>Book/Page</th>
               <th>Date Registered</th>
           </tr>
           <?php while($row = $results_phdeath->fetch_assoc()): ?>
@@ -190,17 +179,14 @@ tr:nth-child(even) { background-color: #f7f5f2; }
                   <td><?php echo htmlspecialchars($row['CFirstName'].' '.$row['CMiddleName'].' '.$row['CLastName']); ?></td>
                   <td><?php echo ($row['CSexId'] == 1) ? 'Male' : (($row['CSexId'] == 2) ? 'Female' : 'Unknown'); ?></td>
                   <td><?php echo htmlspecialchars($row['CDeathDate']); ?></td>
-                  <td><?php echo htmlspecialchars($row['CDeathMunicipality']); ?></td>
-                  <td><?php echo htmlspecialchars($row['CDeathProvince']); ?></td>
                   <td><?php echo htmlspecialchars($row['RegistryNum']); ?></td>
-                  <td><?php echo htmlspecialchars($row['MFirstName'].' '.$row['MMiddleName'].' '.$row['MLastName']); ?></td>
-                  <td><?php echo htmlspecialchars($row['FFirstName'].' '.$row['FMiddleName'].' '.$row['FLastName']); ?></td>
+                  <td><?php echo htmlspecialchars($row['BookNum'].'/'.$row['PageNum']); ?></td>
                   <td><?php echo htmlspecialchars($row['DateRegistered']); ?></td>
               </tr>
           <?php endwhile; ?>
       </table>
   <?php else: ?>
-      <p class="no-result">No matches found in <strong>phcris death</strong> table.</p>
+      <p class="no-result">No matches found in <strong>Philippine CRIS</strong>.</p>
   <?php endif; ?>
 </div>
 
