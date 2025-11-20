@@ -299,7 +299,7 @@ tr:nth-child(even) {
   <div style="display: flex; gap: 20px;">
     <button style="background:#d1d5db; font-weight:bold;">Birth</button>
     <button onclick="location.href='quick-search-marriage.php'">Marriage</button>
-    <button onclick="location.href='quick-search-birth.php'">Death</button>
+    <button onclick="location.href='quick-search-death.php'">Death</button>
 
   </div>
 
@@ -326,6 +326,8 @@ tr:nth-child(even) {
               <th>Mother’s Name</th>
               <th>Father’s Name</th>
               <th>Date Registered</th>
+              <th>Actions</th>
+
           </tr>
           <?php while($row = $results_birth->fetch_assoc()): ?>
               <tr>
@@ -338,6 +340,20 @@ tr:nth-child(even) {
                   <td><?php echo htmlspecialchars($row['MFIRST'].' '.$row['MMI'].'. '.$row['MLAST']); ?></td>
                   <td><?php echo htmlspecialchars($row['FFIRST'].' '.$row['FMI'].'. '.$row['FLAST']); ?></td>
                   <td><?php echo htmlspecialchars($row['DREG']); ?></td>
+                  <td>
+                    <!-- EDIT (Legacy CRIS) -->
+                    <a href="edit_birth_cris.php?id=<?php echo $row['ID']; ?>" 
+                      style="padding:6px 10px; background:#2563eb; color:white; border-radius:6px; text-decoration:none; font-size:12px;">
+                      Edit (CRIS)
+                    </a>
+
+                    <!-- DELETE (Legacy CRIS) -->
+                    <a href="delete_birth_cris.php?id=<?php echo $row['ID']; ?>"
+                      onclick="return confirm('Delete this legacy CRIS birth record?');"
+                      style="padding:6px 10px; background:#b91c1c; color:white; border-radius:6px; text-decoration:none; font-size:12px; margin-left:6px;">
+                      Delete
+                    </a>
+                  </td>
               </tr>
           <?php endwhile; ?>
       </table>
@@ -358,6 +374,8 @@ tr:nth-child(even) {
               <th>Mother’s Name</th>
               <th>Father’s Name</th>
               <th>Date Registered</th>
+              <th>Actions</th>
+
           </tr>
           <?php while($row = $results_phbirth->fetch_assoc()): ?>
               <tr>
@@ -370,6 +388,21 @@ tr:nth-child(even) {
                   <td><?php echo htmlspecialchars($row['MFirstName'].' '.$row['MMiddleName'].' '.$row['MLastName']); ?></td>
                   <td><?php echo htmlspecialchars($row['FFirstName'].' '.$row['FMiddleName'].' '.$row['FLastName']); ?></td>
                   <td><?php echo htmlspecialchars($row['DateRegistered']); ?></td>
+                  <td>
+                    <!-- EDIT (PHCRIS) -->
+                    <a href="edit_birth_phcris.php?id=<?php echo $row['ID']; ?>" 
+                      style="padding:6px 10px; background:#059669; color:white; border-radius:6px; text-decoration:none; font-size:12px;">
+                      Edit (PH)
+                    </a>
+
+                    <!-- DELETE (PHCRIS) -->
+                    <a href="delete_birth_phcris.php?id=<?php echo $row['ID']; ?>"
+                      onclick="return confirm('Delete this PHCRIS birth record?');"
+                      style="padding:6px 10px; background:#dc2626; color:white; border-radius:6px; text-decoration:none; font-size:12px; margin-left:6px;">
+                      Delete
+                    </a>
+                </td>
+
               </tr>
           <?php endwhile; ?>
       </table>

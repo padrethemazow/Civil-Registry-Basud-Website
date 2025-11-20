@@ -122,9 +122,9 @@ tr:nth-child(even) { background-color: #f7f5f2; }
     <div class="tab active">Quick Search</div>
   </div>
   <div style="display: flex; gap: 20px;">
-    <button>Birth</button>
-    <button>Marriage</button>
-    <button>Death</button>
+    <button onclick="location.href='quick-search-birth.php'">Birth</button>  
+    <button onclick="location.href='quick-search-marriage.php'">Marriage</button>
+    <button style="background:#d1d5db; font-weight:bold;">Death</button>  
   </div>
 
   <h1 class="title" style="font-family:'Zen Dots'; color:var(--blue); font-size:28px;">Quick Death Record Search</h1>
