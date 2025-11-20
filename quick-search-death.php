@@ -147,6 +147,7 @@ tr:nth-child(even) { background-color: #f7f5f2; }
               <th>Registry No.</th>
               <th>Book/Page</th>
               <th>Date Registered</th>
+              <th>Actions</th>
           </tr>
           <?php while($row = $results_death->fetch_assoc()): ?>
               <tr>
@@ -156,6 +157,20 @@ tr:nth-child(even) { background-color: #f7f5f2; }
                   <td><?php echo htmlspecialchars($row['LCR_NO']); ?></td>
                   <td><?php echo htmlspecialchars($row['FOLIO_NO'].'/'.$row['PAGE_NO']); ?></td>
                   <td><?php echo htmlspecialchars($row['DREG']); ?></td>
+                  <td>
+                    <!-- EDIT (Legacy CRIS) -->
+                    <a href="edit_death_cris.php?id=<?php echo $row['ID']; ?>" 
+                      style="padding:6px 10px; background:#2563eb; color:white; border-radius:6px; text-decoration:none; font-size:12px;">
+                      Edit (CRIS)
+                    </a>
+
+                    <!-- DELETE (Legacy CRIS) -->
+                    <a href="delete_death_cris.php?id=<?php echo $row['ID']; ?>"
+                      onclick="return confirm('Delete this legacy CRIS death record?');"
+                      style="padding:6px 10px; background:#b91c1c; color:white; border-radius:6px; text-decoration:none; font-size:12px; margin-left:6px;">
+                      Delete
+                    </a>
+                  </td>
               </tr>
           <?php endwhile; ?>
       </table>
@@ -173,6 +188,7 @@ tr:nth-child(even) { background-color: #f7f5f2; }
               <th>Registry No.</th>
               <th>Book/Page</th>
               <th>Date Registered</th>
+              <th>Actions</th>
           </tr>
           <?php while($row = $results_phdeath->fetch_assoc()): ?>
               <tr>
@@ -182,6 +198,20 @@ tr:nth-child(even) { background-color: #f7f5f2; }
                   <td><?php echo htmlspecialchars($row['RegistryNum']); ?></td>
                   <td><?php echo htmlspecialchars($row['BookNum'].'/'.$row['PageNum']); ?></td>
                   <td><?php echo htmlspecialchars($row['DateRegistered']); ?></td>
+                  <td>
+                    <!-- EDIT (PHCRIS) -->
+                    <a href="edit_death_phcris.php?id=<?php echo $row['ID']; ?>" 
+                      style="padding:6px 10px; background:#059669; color:white; border-radius:6px; text-decoration:none; font-size:12px;">
+                      Edit (PH)
+                    </a>
+
+                    <!-- DELETE (PHCRIS) -->
+                    <a href="delete_death_phcris.php?id=<?php echo $row['ID']; ?>"
+                      onclick="return confirm('Delete this PHCRIS birth record?');"
+                      style="padding:6px 10px; background:#dc2626; color:white; border-radius:6px; text-decoration:none; font-size:12px; margin-left:6px;">
+                      Delete
+                    </a>
+                </td>
               </tr>
           <?php endwhile; ?>
       </table>
