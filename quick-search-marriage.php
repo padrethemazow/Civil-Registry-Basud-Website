@@ -311,7 +311,7 @@ tr:nth-child(even) {
       <button type="submit">🔍 Search</button>
     </form>
   </div>
-
+  <a href="add_marriage_phcris.php"><button>Add Marriage record</button></a>
   <!-- Legacy Marriage -->
   <div class="section-title">Legacy CRIS Marriage Table (marriage)</div>
   <?php if ($results_marriage && $results_marriage->num_rows > 0): ?>

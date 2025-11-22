@@ -136,6 +136,7 @@ tr:nth-child(even) { background-color: #f7f5f2; }
       <button type="submit">🔍 Search</button>
     </form>
   </div>
+  <a href="add_death_phcris.php"><button>Add Death record</button></a>
 
   <div class="section-title">Legacy CRIS Death Table</div>
   <?php if ($results_death && $results_death->num_rows > 0): ?>

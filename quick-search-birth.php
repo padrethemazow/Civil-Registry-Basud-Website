@@ -312,6 +312,7 @@ tr:nth-child(even) {
       <button type="submit">🔍 Search</button>
     </form>
   </div>
+  <a href="add_birth_phcris.php"><button>Add Birth record</button></a>
 
   <div class="section-title">Legacy CRIS Birth Table (birth)</div>
   <?php if ($results_birth && $results_birth->num_rows > 0): ?>
