@@ -310,7 +310,6 @@ if (!isset($_SESSION['userrealname'])) {
         </div>
         <div class="right-info">
             <span>User: <?= htmlspecialchars($_SESSION['userrealname']); ?></span>
-            <span class="icon">🔔</span>
             <span class="icon">⚙️</span>
             <div class="user-dropdown">
                 <div class="user-chip" onclick="toggleUserMenu()">
@@ -330,7 +329,7 @@ if (!isset($_SESSION['userrealname'])) {
     <div class="container">
         <div class="tabs">
             <div class="tab active">Dashboard</div>
-            <a href="detailed-search.html" class="tab">Detailed Search</a>
+            <a href="detailed-search-birth.php" class="tab">Detailed Search</a>
             <a href="quick-search-birth.php" class="tab">Quick Search</a>
         </div>
 

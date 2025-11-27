@@ -152,7 +152,6 @@ tr:nth-child(even) { background-color: #f7f5f2; }
   </div>
   <div class="right-info">
       <span>User: <?= htmlspecialchars($_SESSION['userrealname']); ?></span>
-      <span class="icon">🔔</span>
       <span class="icon">⚙️</span>
       <div class="user-dropdown">
           <div class="user-chip" onclick="toggleUserMenu()">
@@ -172,7 +171,7 @@ tr:nth-child(even) { background-color: #f7f5f2; }
 <div class="container">
   <div class="tabs">
     <a href="dashboard.php" class="tab">Dashboard</a>
-    <a href="detailed-search.html" class="tab">Detailed Search</a>
+    <a href="detailed-search-birth.php" class="tab">Detailed Search</a>
     <div class="tab active">Quick Search</div>
   </div>
   <div style="display: flex; gap: 20px;">
