@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // edit_phmarriage.php
 // Full PDO editor for `phmarriage` (all fields) — uses prepared statements & safe NULL handling
 

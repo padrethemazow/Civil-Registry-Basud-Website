@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // edit_death_phcris.php
 // Dynamic edit form for mbdis_phcris.death — all fields editable
 // Works on older PHP versions (no use of variadic ... in bind_param)

@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // Connect DB
 $servername = "localhost";
 $username = "root";

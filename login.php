@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $hashed_password)) {
             $_SESSION['userid'] = $userid;
             $_SESSION['userrealname'] = $userrealname;
-            header("Location: dashboard.html"); // redirect after login
+            header("Location: dashboard.php"); // redirect after login
             exit;
         } else {
             echo "<script>alert('Invalid password'); window.history.back();</script>";

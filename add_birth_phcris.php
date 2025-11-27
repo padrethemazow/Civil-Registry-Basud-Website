@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // add_birth_phcris.php
 // Add a new PHCRIS birth record (all columns, dynamic like marriage version)
 

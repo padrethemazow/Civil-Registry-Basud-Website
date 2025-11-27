@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // add_death_phcris.php
 // Add a new PHCRIS death record (all columns, dynamic like birth/marriage)
 

@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +39,43 @@
             display: flex;
             flex-direction: column;
         }
+
+
+        .user-dropdown {
+    position: relative;
+}
+
+.user-chip {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: white;
+    color: #333;
+    padding: 8px 0;
+    border-radius: 8px;
+    min-width: 140px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
+    z-index: 999;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f3f4f6;
+}
+
+
 
         /* Top Nav */
         .topbar {
@@ -262,10 +309,21 @@
             </div>
         </div>
         <div class="right-info">
-            <span>DB: MCRMainServer, User: LORNAJ</span>
+            <span>User: <?= htmlspecialchars($_SESSION['userrealname']); ?></span>
             <span class="icon">🔔</span>
             <span class="icon">⚙️</span>
-            <div class="user-chip"><span class="avatar">AD</span> Admin User ▾</div>
+            <div class="user-dropdown">
+                <div class="user-chip" onclick="toggleUserMenu()">
+                    <span class="avatar">
+                        <?= strtoupper(substr($_SESSION['userrealname'], 0, 2)); ?>
+                    </span>
+                    <?= htmlspecialchars($_SESSION['userrealname']); ?> ▾
+                </div>
+
+                <div class="dropdown-menu" id="userMenu">
+                    <a href="logout.php" class="dropdown-item">Logout</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -343,6 +401,19 @@
         function refreshStats() {
             alert('Refreshed');
         }
+
+        function toggleUserMenu() {
+    const menu = document.getElementById("userMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+window.addEventListener("click", function(e) {
+    const menu = document.getElementById("userMenu");
+    if (!e.target.closest(".user-dropdown")) {
+        menu.style.display = "none";
+    }
+});
+
     </script>
 </body>
 </html>

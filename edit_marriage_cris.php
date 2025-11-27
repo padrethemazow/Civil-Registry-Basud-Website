@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // edit_marriage_cris.php
 // Full corrected version (uses PDO for robust binding & null handling)
 

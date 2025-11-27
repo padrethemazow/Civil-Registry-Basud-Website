@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // Database connections
 $servername = "localhost";
 $username = "root";
@@ -77,6 +84,42 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+/* === DROPDOWN USER MENU === */
+.user-dropdown {
+    position: relative;
+}
+
+.user-chip {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: #ffffff;
+    color: #333;
+    border-radius: 10px;
+    min-width: 150px;
+    padding: 8px 0;
+    border: 1px solid #d9d3cc;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f3f4f6;
 }
 
 /* === TOP NAV === */
@@ -274,7 +317,7 @@ tr:nth-child(even) {
   <div class="brand">
     <div class="brand-logo"><img src="system logo.png"></div>
     <div class="menu">
-      <button onclick="location.href='dashboard.html'">Dashboard</button>
+      <button onclick="location.href='dashboard.php'">Dashboard</button>
       <button>Search</button>
       <button>View</button>
       <button>Tools</button>
@@ -282,16 +325,27 @@ tr:nth-child(even) {
     </div>
   </div>
   <div class="right-info">
-    <span>DB: MCRMainServer, User: LORNAJ</span>
-    <span class="icon">🔔</span>
-    <span class="icon">⚙️</span>
-    <div class="user-chip"><span class="avatar">AD</span> Admin User ▾</div>
+      <span>User: <?= htmlspecialchars($_SESSION['userrealname']); ?></span>
+      <span class="icon">🔔</span>
+      <span class="icon">⚙️</span>
+      <div class="user-dropdown">
+          <div class="user-chip" onclick="toggleUserMenu()">
+              <span class="avatar">
+                  <?= strtoupper(substr($_SESSION['userrealname'], 0, 2)); ?>
+              </span>
+              <?= htmlspecialchars($_SESSION['userrealname']); ?> ▾
+          </div>
+
+          <div class="dropdown-menu" id="userMenu">
+              <a href="logout.php" class="dropdown-item">Logout</a>
+          </div>
+      </div>
   </div>
 </div>
 
 <div class="container">
   <div class="tabs">
-    <a href="dashboard.html" class="tab">Dashboard</a>
+    <a href="dashboard.php" class="tab">Dashboard</a>
     <a href="detailed-search.html" class="tab">Detailed Search</a>
     <div class="tab active">Quick Search</div>
   </div>
@@ -401,6 +455,20 @@ tr:nth-child(even) {
 </div>
 
 <div class="footer">© 2025 Basud MBDIS Dashboard. All rights reserved.</div>
+<script>
+function toggleUserMenu() {
+    const menu = document.getElementById("userMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+window.addEventListener("click", function(e) {
+    const menu = document.getElementById("userMenu");
+    if (!e.target.closest(".user-dropdown")) {
+        menu.style.display = "none";
+    }
+});
+</script>
+
 </body>
 </html>
 

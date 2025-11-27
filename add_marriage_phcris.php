@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['userrealname'])) {
+    header("Location: index.html");
+    exit;
+}
 // add_marriage_phcris.php
 // Add a new PHCRIS marriage record (all columns)
 
