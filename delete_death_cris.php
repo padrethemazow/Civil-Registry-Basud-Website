@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mbdis_cris";
+$servername = "sql105.infinityfree.com";
+$username   = "if0_40542314";
+$password   = "Sx5Sw60QmFT";
+$dbname = "if0_40542314_mbdis_cris";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

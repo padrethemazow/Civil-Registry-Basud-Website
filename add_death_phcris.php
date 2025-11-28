@@ -10,10 +10,10 @@ if (!isset($_SESSION['userrealname'])) {
 // Add a new PHCRIS death record (all columns, dynamic like birth/marriage)
 
 // --- Config ---
-$servername = "localhost";
-$username   = "root";
-$password   = "";
-$dbname     = "mbdis_phcris";
+$servername = "sql105.infinityfree.com";
+$username   = "if0_40542314";
+$password   = "Sx5Sw60QmFT";
+$dbname     = "if0_40542314_mbdis_phcris";
 
 date_default_timezone_set('Asia/Manila');
 

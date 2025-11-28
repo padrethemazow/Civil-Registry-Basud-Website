@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 if (!isset($_SESSION['userrealname'])) {
@@ -7,21 +11,24 @@ if (!isset($_SESSION['userrealname'])) {
 }
 
 // Database connections
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "sql105.infinityfree.com";
+$username   = "if0_40542314";
+$password   = "Sx5Sw60QmFT";
 
 // Connect to MBDIS-CRIS (legacy)
-$conn1 = new mysqli($servername, $username, $password, "mbdis_cris");
+$conn1 = new mysqli($servername, $username, $password, "if0_40542314_mbdis_cris");
 if ($conn1->connect_error) {
     die("Connection to mbdis_cris failed: " . $conn1->connect_error);
 }
+error_log("DEBUG: Connected to DB1 (mbdis_cris) successfully.");
 
 // Connect to MBDIS-PHCRIS (new)
-$conn2 = new mysqli($servername, $username, $password, "mbdis_phcris");
+$conn2 = new mysqli($servername, $username, $password, "if0_40542314_mbdis_phcris");
 if ($conn2->connect_error) {
     die("Connection to mbdis_phcris failed: " . $conn2->connect_error);
 }
+error_log("DEBUG: Connected to DB2 (mbdis_phcris) successfully.");
+
 
 // Read inputs (GET so fields persist in URL)
 $book    = trim($_GET['book']    ?? '');
@@ -99,9 +106,12 @@ if ($ranSearch) {
         ORDER BY CBirthDate DESC
         LIMIT 1000
     ";
-
+    
+    
+    error_log("DEBUG: Preparing PHCRIS query.");
     $stmt_ph = $conn2->prepare($sql_ph);
     if ($stmt_ph === false) {
+        error_log("ERROR: PHCRIS prepare failed → " . $conn2->error);
         die("phbirth prepare failed: " . $conn2->error);
     }
 

@@ -7,18 +7,19 @@ if (!isset($_SESSION['userrealname'])) {
     exit;
 }
 // Database connections
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "sql105.infinityfree.com";
+$username   = "if0_40542314";
+$password   = "Sx5Sw60QmFT";
+
 
 // Connect to MBDIS-CRIS (legacy)
-$conn1 = new mysqli($servername, $username, $password, "mbdis_cris");
+$conn1 = new mysqli($servername, $username, $password, "if0_40542314_mbdis_cris");
 if ($conn1->connect_error) {
     die("Connection to mbdis_cris failed: " . $conn1->connect_error);
 }
 
 // Connect to MBDIS-PHCRIS (new)
-$conn2 = new mysqli($servername, $username, $password, "mbdis_phcris");
+$conn2 = new mysqli($servername, $username, $password, "if0_40542314_mbdis_phcris");
 if ($conn2->connect_error) {
     die("Connection to mbdis_phcris failed: " . $conn2->connect_error);
 }

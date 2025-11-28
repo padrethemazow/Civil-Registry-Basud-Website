@@ -9,10 +9,10 @@ if (!isset($_SESSION['userrealname'])) {
 // Full corrected version (uses PDO for robust binding & null handling)
 
 // --- Config ---
-$servername = "localhost";
-$username   = "root";
-$password   = "";
-$dbname     = "mbdis_cris"; // keep your original DB name
+$servername = "sql105.infinityfree.com";
+$username   = "if0_40542314";
+$password   = "Sx5Sw60QmFT";
+$dbname     = "if0_40542314_mbdis_cris"; // keep your original DB name
 
 // Set timezone (Asia/Manila as per your environment)
 date_default_timezone_set('Asia/Manila');
